@@ -2,41 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* NFT Marketplace Design System - Rich, Vibrant, and Artistic */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Backgrounds */
+    --background: 240 15% 9%;
+    --foreground: 300 20% 96%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card System */
+    --card: 240 12% 12%;
+    --card-foreground: 300 15% 94%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Interactive Elements */
+    --popover: 240 12% 11%;
+    --popover-foreground: 300 15% 94%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary Brand - Electric Purple */
+    --primary: 270 85% 65%;
+    --primary-foreground: 300 20% 96%;
+    --primary-glow: 270 85% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Deep Blue */
+    --secondary: 220 70% 25%;
+    --secondary-foreground: 300 15% 94%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Gold */
+    --accent: 45 90% 65%;
+    --accent-foreground: 240 15% 9%;
+    --accent-glow: 45 90% 75%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted Elements */
+    --muted: 240 8% 18%;
+    --muted-foreground: 300 8% 70%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 300 20% 96%;
+    --success: 120 60% 50%;
+    --success-foreground: 300 20% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and Inputs */
+    --border: 240 10% 20%;
+    --input: 240 10% 16%;
+    --ring: 270 85% 65%;
 
-    --radius: 0.5rem;
+    /* Design System Variables */
+    --radius: 0.75rem;
+
+    /* Custom Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 85% 65%), hsl(320 85% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 70% 25%), hsl(240 70% 35%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 90% 65%), hsl(35 85% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(240 15% 9%), hsl(270 25% 15%), hsl(300 35% 20%));
+    
+    /* Glassmorphism */
+    --glass-bg: hsla(240, 12%, 12%, 0.7);
+    --glass-border: hsla(300, 20%, 96%, 0.1);
+    
+    /* Shadows */
+    --shadow-nft: 0 25px 50px -12px hsla(270, 85%, 65%, 0.25);
+    --shadow-glow: 0 0 40px hsla(270, 85%, 65%, 0.3);
+    --shadow-card: 0 10px 30px -10px hsla(240, 15%, 9%, 0.5);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +132,77 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-hero);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* NFT Card Hover Effects */
+  .nft-card {
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:-translate-y-2;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .nft-card:hover {
+    box-shadow: var(--shadow-nft);
+  }
+
+  /* Glass Effect */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Gradient Text */
+  .gradient-text-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Custom Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-spring {
+    transition: var(--transition-spring);
+  }
+}
+
+/* Custom Keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
